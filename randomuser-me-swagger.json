@@ -1,0 +1,174 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Randomuser.me"
+    },
+    "schemes": [
+        "https"
+    ],
+    "host": "randomuser.me",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api": {
+            "get": {
+                "description": "Get Single Random User",
+                "parameters": [
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "male or female",
+                        "required": false,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "nat",
+                        "in": "query",
+                        "description": "Nationality {AU, BR, CA, CH, DE, ES, FI, FR, GB, IE, IR, NL, NZ, US}",
+                        "required": false,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "UserResponse": {
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Result"
+                    }
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "seed": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "Result": {
+            "properties": {
+                "User": {
+                    "$ref": "#/definitions/User"
+                }
+            }
+        },
+        "User": {
+            "properties": {
+                "gender": {
+                    "type": "string"
+                },
+                "name": {
+                    "$ref": "#/definitions/NameType"
+                },
+                "location": {
+                    "$ref": "#/definitions/AddressType"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "salt": {
+                    "type": "string"
+                },
+                "md5": {
+                    "type": "string"
+                },
+                "sha1": {
+                    "type": "string"
+                },
+                "sha256": {
+                    "type": "string"
+                },
+                "register": {
+                    "type": "number",
+                    "format": "int32"
+                },
+                "dob": {
+                    "type": "number",
+                    "format": "int32"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "cell": {
+                    "type": "string"
+                },
+                "NINO": {
+                    "type": "string"
+                },
+                "picture": {
+                    "$ref": "#/definitions/PictureType"
+                }
+            }
+        },
+        "NameType": {
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "first": {
+                    "type": "string"
+                },
+                "last": {
+                    "type": "string"
+                }
+            }
+        },
+        "AddressType": {
+            "properties": {
+                "street": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            }
+        },
+        "PictureType": {
+            "properties": {
+                "large": {
+                    "description": "large image url",
+                    "type": "string"
+                },
+                "medium": {
+                    "description": "medium image url",
+                    "type": "string"
+                },
+                "thumbnail": {
+                    "description": "thumbnail",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
